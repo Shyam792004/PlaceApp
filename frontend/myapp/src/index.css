@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-white text-gray-800;
+}
+
+/* Optional: Dark mode support */
+.dark body {
+  @apply bg-gray-900 text-white;
+}
