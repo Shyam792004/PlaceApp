@@ -29,9 +29,27 @@ function UserMessages() {
     setInput('');
   };
 
+  const handleClearMessages = () => {
+    if (alert('Are you sure you want to clear all messages?')) {
+      setMessages([]);
+      localStorage.removeItem('messages');
+    }
+  };
+
   return (
     <div className="p-6 w-full max-w-4xl mx-auto h-[85vh] flex flex-col">
-      <h2 className="text-2xl font-bold text-violet-700 mb-4">Your Messages</h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold text-violet-700">Your Messages</h2>
+        {messages.length > 0 && (
+          <button
+            onClick={handleClearMessages}
+            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm"
+          >
+            Clear All Messages
+          </button>
+        )}
+      </div>
+      
       <div className="flex-1 overflow-y-auto bg-gray-50 border rounded-lg px-4 py-2 space-y-2">
         {messages.map((msg, index) => (
           <div
